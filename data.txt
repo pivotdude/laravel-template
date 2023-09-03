@@ -1,0 +1,7 @@
+devuser
+devpass 
+
+
+mysql - 3310
+phpmyadmin - 8080
+laravel - 8000
