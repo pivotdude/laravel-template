@@ -9,6 +9,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: qwerty12345
       MYSQL_DATABASE: laravel
+    volumes:
+      - dbdata:/var/lib/postgresql/data
 
   phpmyadmin:
     image: phpmyadmin:5.2.1-apache
@@ -22,12 +24,27 @@ services:
       MYSQL_ROOT_PASSWORD: qwerty12345
 
   laravel:
-    build: .
+    build:
+      context: .
+      dockerfile: ./backend.dockerfile
     restart: always
     command: bash -c "php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000"
     ports:
-    - 8000:8000
+      - 8000:8000
     depends_on:
       - db
-    
 
+
+  react:
+    build:
+      context: .
+      dockerfile: ./frontend.dockerfile
+    restart: always
+    command: npm run dev
+    ports:
+      - 5173:5173
+    depends_on:
+      - laravel
+
+volumes:
+  dbdata:
