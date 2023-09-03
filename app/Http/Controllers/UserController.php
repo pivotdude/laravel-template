@@ -9,7 +9,13 @@ class UserController extends Controller
     public function show()
     {
         return Inertia::render('user/userProfile', [
-          'user' => ["name" => "John"]
+          'user' => ["name" => "Peter"]
         ]);
     }
+
+    public function toProfile()
+    {
+        return to_route('user.show');
+    }
+
 }
