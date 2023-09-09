@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: mysql:8.0
+    image: mysql:8.1
     restart: unless-stopped
     ports:
     - 3306:3306
@@ -11,6 +11,10 @@ services:
       MYSQL_DATABASE: laravel
     volumes:
       - dbdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
 
   phpmyadmin:
     image: phpmyadmin:5.2.1-apache
@@ -18,7 +22,8 @@ services:
     ports:
       - 8080:80
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: qwerty12345
@@ -26,23 +31,22 @@ services:
   laravel:
     build:
       context: .
-      dockerfile: ./backend.dockerfile
+      dockerfile: Backend.Dockerfile
     restart: unless-stopped
     command: bash -c "php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000"
     ports:
       - 8000:8000
     depends_on:
-      - db
-      - react
-      - phpmyadmin
+      db:
+        condition: service_healthy
 
 
   react:
     build:
       context: .
-      dockerfile: ./frontend.dockerfile
+      dockerfile: Frontend.Dockerfile
     restart: unless-stopped
-    command: npm run dev
+    command: pnpm run preview
     ports:
       - 5173:5173
 
