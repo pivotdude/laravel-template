@@ -14,5 +14,10 @@ use \App\Http\Controllers\UserController;
 |
 */
 
-Route::get('user/userProfile', [UserController::class, 'show']);
 
+Route::get('', 'index');
+
+
+Route::controller(UserController::class)->prefix("user")->group(function () {
+    Route::get('user/userProfile', 'show');
+});
