@@ -1,7 +1,18 @@
-devuser
-devpass 
+###mysql, phpMyAdmin
+root
+qwerty12345
 
 
 mysql - 3310
 phpmyadmin - 8080
 laravel - 8000
+react - 5173
+
+http://localhost:8000 - laravel
+172.19.0.1:3306 - mysql
+http://localhost:8080/index.php - phpMyAdmin
+
+
+php artisan db:seed - сидеры
+docker-composer up
+docker-composer up --build
