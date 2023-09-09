@@ -1,0 +1,32 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DOCKER_USERNAME: pivotdude
+  BACKEND_TITLE: laravel-template-frontend
+  FRONTEND_TITLE: laravel-template-backend
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        run: docker login -u $DOCKER_USERNAME -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Backend image
+        run: |
+          docker build -t $DOCKER_USERNAME/$BACKEND_TITLE:latest -f Backend.Dockerfile .
+          docker push $DOCKER_USERNAME/$BACKEND_TITLE:latest
+
+      - name: Build and push Frontend image
+        run: |
+          docker build -t $DOCKER_USERNAME/$FRONTEND_TITLE:latest -f Frontend.Dockerfile .
+          docker push $DOCKER_USERNAME/$FRONTEND_TITLE:latest
