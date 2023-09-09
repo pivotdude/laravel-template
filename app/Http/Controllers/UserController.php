@@ -18,4 +18,11 @@ class UserController extends Controller
         return to_route('user.show');
     }
 
+    public function index()
+    {
+        return Inertia::render('index', [
+            'user' => ["name" => "Peter"]
+        ]);
+    }
+
 }
