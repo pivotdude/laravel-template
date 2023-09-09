@@ -2,17 +2,20 @@
 root
 qwerty12345
 
-
+name - port
 mysql - 3310
 phpmyadmin - 8080
 laravel - 8000
-react - 5173
+react - 5173 - dont use
 
 http://localhost:8000 - laravel
 172.19.0.1:3306 - mysql
 http://localhost:8080/index.php - phpMyAdmin
 
 
-php artisan db:seed - сидеры
+
 docker-composer up
 docker-composer up --build
+
+sudo docker exec -it laravelapp_laravel_1 bash
+php artisan db:seed - сидеры
