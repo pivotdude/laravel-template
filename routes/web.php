@@ -15,7 +15,7 @@ use \App\Http\Controllers\UserController;
 */
 
 
-Route::get('', 'index');
+Route::get('', [UserController::class, 'index']);
 
 
 Route::controller(UserController::class)->prefix("user")->group(function () {
