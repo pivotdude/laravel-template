@@ -17,3 +17,5 @@ RUN pnpm run build
 
 # Открываем порт 5173 для доступа к приложению
 EXPOSE 5173
+
+CMD ["pnpm", "run", "preview"]
