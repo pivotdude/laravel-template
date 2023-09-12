@@ -29,22 +29,19 @@ services:
       MYSQL_ROOT_PASSWORD: qwerty12345
 
   laravel:
-    build:
-      context: .
-      dockerfile: Backend.Dockerfile
+    image: pivotdude/laravel-template-backend:latest
     restart: unless-stopped
+    command: bash -c "php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000"
     ports:
       - 8000:8000
     depends_on:
       db:
         condition: service_healthy
 
-
   react:
-    build:
-      context: .
-      dockerfile: Frontend.Dockerfile
+    image: pivotdude/laravel-template-frontend:latest
     restart: unless-stopped
+    command: pnpm run preview
     ports:
       - 5173:5173
 
