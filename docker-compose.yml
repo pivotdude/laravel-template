@@ -1,52 +1,51 @@
-version: '3'
+version: "3"
 
 services:
-  db:
-    image: mysql:8.1
-    restart: unless-stopped
-    ports:
-    - 3306:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: qwerty12345
-      MYSQL_DATABASE: laravel
-    volumes:
-      - dbdata:/var/lib/postgresql/data
-    healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      timeout: 20s
-      retries: 10
+    db:
+        image: mysql:8.0
+        restart: unless-stopped
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: qwerty12345
+            MYSQL_DATABASE: laravel
+        volumes:
+            - dbdata:/var/lib/mysql
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
 
-  phpmyadmin:
-    image: phpmyadmin:5.2.1-apache
-    restart: unless-stopped
-    ports:
-      - 8080:80
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: qwerty12345
+    phpmyadmin:
+        image: phpmyadmin:5.2.1-apache
+        restart: unless-stopped
+        ports:
+            - 8080:80
+        depends_on:
+            db:
+                condition: service_healthy
+        environment:
+            PMA_HOST: db
+            MYSQL_ROOT_PASSWORD: qwerty12345
 
-  laravel:
-    build:
-      context: .
-      dockerfile: Backend.Dockerfile
-    restart: unless-stopped
-    ports:
-      - 8000:8000
-    depends_on:
-      db:
-        condition: service_healthy
+    laravel:
+        build:
+            context: ./laravel
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        ports:
+            - 8000:8000
+        depends_on:
+            db:
+                condition: service_healthy
 
-
-  react:
-    build:
-      context: .
-      dockerfile: Frontend.Dockerfile
-    restart: unless-stopped
-    ports:
-      - 5173:5173
+    react:
+        build:
+            context: .
+            dockerfile: Frontend.Dockerfile
+        restart: unless-stopped
+        ports:
+            - 5173:5173
 
 volumes:
-  dbdata:
+    dbdata:
