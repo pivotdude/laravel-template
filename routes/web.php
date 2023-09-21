@@ -19,7 +19,7 @@ use \App\Http\Controllers\RegistrationController;
 Route::controller(PostController::class)->prefix("posts")->group(function () {
    Route::get("/", "index");
    Route::get("/{id}", "show");
-   Route::get("/{id}/delete", "delete");
+   Route::get("/{id}/create", "create");
    Route::get("/{id}/like", "like");
 });
 
