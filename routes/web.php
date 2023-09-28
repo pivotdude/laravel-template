@@ -23,5 +23,9 @@ Route::controller(PostController::class)->prefix("posts")->group(function () {
    Route::get("/{id}/like", "like");
 });
 
-Route::get("/signin", [LoginController::class, "index"]);
-Route::get("/signup", [RegistrationController::class, "index"]);
+Route::get("/", function () {
+    return view("index");
+});
+
+Route::get("/login", [LoginController::class, "index"]);
+Route::get("/registration", [RegistrationController::class, "index"]);
