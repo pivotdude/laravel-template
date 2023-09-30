@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Http\Requests\UserStoreRequest;
 
 class UserController extends Controller
 {
-    public function show()
+    public function show(UserStoreRequest $request): string
     {
-        return Inertia::render('user/userProfile', [
-          'user' => ["name" => "Peter"]
-        ]);
+        $validate = $request->validated();
+        echo $validate;
+//        return Inertia::render('user/userProfile', [
+//          'user' => ["name" => "Peter"]
+//        ]);
     }
 
     public function toProfile()
