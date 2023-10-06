@@ -2,7 +2,6 @@
 
 @section("content")
     <ul class="align-center px-[200px]">
-
            @foreach($posts as $post)
                <li class="block mt-10 w-[1200px]">
                    <p class="font-bold text-9xl">{{ $post['id'] }}</p>
