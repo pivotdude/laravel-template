@@ -1,10 +1,8 @@
-@extends('layouts.main');
+@extends("layouts.base")
 
-@section('title', 'Home');
+@section("content")
+    <div style="min-height: 100vh">
+        Главная
+    </div>
 
-@section('content')
-    <x-alert :$name />
-    Hello world!
-    Hello, {{ $name }}.
-    The current UNIX timestamp is {{ time() }}.
 @endsection
