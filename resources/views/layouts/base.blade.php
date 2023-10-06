@@ -9,7 +9,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <script src="cdn.tailwindcss.com_3.3.3.js"></script>
+{{--    <script src="cdn.tailwindcss.com_3.3.3.js"></script>--}}
+    <script src="{{ asset("cdn.tailwindcss.com_3.3.3.js") }}"></script>
 
     <!-- Styles -->
     <style>
@@ -19,8 +20,9 @@
 <body class="antialiased">
 
     <x-header />
-
-    @yield("content")
+    <main class="container mx-auto px-10">
+        @yield("content")
+    </main>
 
     <x-footer />
 

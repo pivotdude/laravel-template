@@ -36,3 +36,6 @@ Route::get("/", function () {
 
 Route::get("/login", [LoginController::class, "index"]);
 Route::get("/registration", [RegistrationController::class, "index"]);
+
+Route::get("auth/login", [\App\Http\Controllers\AuthController::class, "login"])->name('auth.login.submit');
+Route::get("/registration", [RegistrationController::class, "index"]);

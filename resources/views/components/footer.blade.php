@@ -1,3 +1,8 @@
-<Footer style="width: 100%; height: 50px; background: #1a202c;  text-align: center; padding: 20px 0 20px 0; color: #fff" class="">
-    Footer
-</Footer>
+<div class="bg-sky-200 py-4">
+    <footer class="flex flex-row space-x-4 container mx-10">
+        <a href="">link 1</a>
+        <a href="">link 2</a>
+        <a href="">link 3</a>
+    </footer>
+
+</div>
