@@ -14,8 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        print('UserSeeder success');
         \Database\Seeders\UserSeeder::run();
-        
-        // \App\Models\User::factory(10)->create(); // dont use plz
+        \Database\Seeders\PostSeeder::run();
+
     }
 }
