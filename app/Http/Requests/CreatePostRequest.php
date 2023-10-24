@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UserStoreRequest extends BaseRequest
+class CreatePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,23 +23,16 @@ class UserStoreRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:user',
-            'name' => 'required|string|max:50',
-            'password' => 'required|min:6|max:255'
+            'title' => ['required', 'string'],
+            'content' => ['required', 'string'],
         ];
     }
 
-    /**
-     * Custom message for validation
-     *
-     * @return array
-     */
     public function messages(): array
     {
         return [
-            'email.required' => 'Email обязательное поле',
-            'name.required' => 'Name обязательное поле',
-            'password.required' => 'Password обязательное поле',
+            'title.required' => 'Заголовок обязателен',
+            'content.required' => 'Контент обязателен',
         ];
     }
 
