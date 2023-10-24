@@ -19,7 +19,6 @@ return new class extends Migration
             $table->boolean("published")->default(false);
 
             $table->foreignId("user_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-//            $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();
         });

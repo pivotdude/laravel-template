@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePostRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -47,6 +48,8 @@ class UserController extends Controller
 //            'user' => ["name" => "Peter"]
 //        ]);
     }
+
+
 
 
 }

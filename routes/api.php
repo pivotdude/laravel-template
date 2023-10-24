@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::prefix("posts")->group(function () {
+    Route::post("/create", [PostController::class, "actionCreate"])->name('api.post.create');
+    Route::get("/{id}/like", [PostController::class, "actionLike"])->name('api.post.like');
+    Route::get("/{id}/delete", [PostController::class, "actionDelete"])->name('post.delete');
 });
