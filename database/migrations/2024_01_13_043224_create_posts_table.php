@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string("carNumber");
             $table->string("description");
             $table->foreignId("status_id")->constrained();
-            $table->enum("new", ["new", "accepted", "declined"]);
 
             $table->timestamps();
         });
