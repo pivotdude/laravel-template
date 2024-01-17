@@ -24,11 +24,12 @@ class RegisterRequest extends FormRequest
         return [
             "login" => ["required", "string", "max:255", "unique:users,login"],
             "email" => ["required", "string", "email", "max:255", "unique:users,email"],
-            "name" => ["required", "string", "max:255", "regex:/^[А-Яа-яЁёЙй]+\s[А-Яа-яЁёЙй]+$/u"],
+            "name" => ["required", "string", "max:255", "regex:/^[А-Яа-яЁёЙй]+\s[А-Яа-яЁёЙй]+\s[А-Яа-яЁёЙй]+$/u"],
             "phone" => ["required", "string", "max:255", "regex:/^[+7(999)-999-999-999]+$/u"],
             "password" => ["required", "string", "min:6", "max:255"],
         ];
     }
+
     public function messages(): array
     {
         return [

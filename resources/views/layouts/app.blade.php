@@ -40,7 +40,16 @@
                     <div class="collapse navbar-collapse show" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
+                                <a class="nav-link">{{auth()->user()->name}}</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{route("logout")}}">Выйти</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route("statements")}}">Заявления</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route("statements.create")}}">Создать заявления</a>
                             </li>
                         </ul>
                     </div>
