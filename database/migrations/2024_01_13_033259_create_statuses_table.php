@@ -26,4 +26,8 @@ return new class extends Migration
     {
         Schema::dropIfExists('statuses');
     }
+
+    public function posts() {
+        $this->hasMany(\App\Models\Post::class);
+    }
 };

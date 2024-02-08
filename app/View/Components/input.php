@@ -12,15 +12,19 @@ class input extends Component
     public string $name;
     public string $type;
     public string $text;
+    public string $example;
+    public string $required;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $name, string $text, $type = "text")
+    public function __construct(string $name, string $text, $type = "text", $example = "", $required=false)
     {
         $this->name = $name;
         $this->text = $text;
         $this->type = $type;
+        $this->example = $example;
+        $this->required = $required;
     }
 
     /**
