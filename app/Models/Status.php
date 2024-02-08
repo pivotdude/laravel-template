@@ -13,4 +13,9 @@ class Status extends Model
         'name',
         'code'
     ];
+
+    public function posts()
+    {
+        return $this->hasMany('Posts');
+    }
 }

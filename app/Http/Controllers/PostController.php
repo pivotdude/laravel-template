@@ -84,5 +84,4 @@ class PostController extends Controller
             return Post::where("user_id", $user->id)->get();
         }
     }
-
 }
